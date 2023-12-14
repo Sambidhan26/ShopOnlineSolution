@@ -1,0 +1,25 @@
+﻿
+@page "/"
+@inherits ProductsBase
+
+<h3>Products</h3>
+@if(Products == null)
+{
+    <h3> Loading Process.....   </h3>
+}
+else
+{
+    <h3 class="mb-5"></h3>
+
+    var productCount = Products.Count();
+    @if(productCount > 0)
+    {
+        const int itemsPerRow = 4;
+        var productsRowList = new List<ProductDto>();
+
+        @for (int i = 0; i < productCount; i++)
+        {
+            productsRowList = Products.Skip(i * itemsPerRow).Take(itemsPerRow).ToList();
+        }
+    }
+}
